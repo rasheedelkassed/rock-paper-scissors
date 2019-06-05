@@ -66,7 +66,7 @@ describe 'A game of rock paper scissors' do
       
       it 'finishes with a call to finish' do
         game.finish
-        expect { game.finished? }.to eq(true)
+        expect { game.play }.to raise_error(RuntimeError)
       end
     end
 
@@ -79,7 +79,7 @@ describe 'A game of rock paper scissors' do
       end
       it 'finishes with a call to finish' do
         game.finish
-        expect { game.finished? }.to eq(true)
+        expect { game.play }.to raise_error(RuntimeError)
       end
     end
 
@@ -93,7 +93,7 @@ describe 'A game of rock paper scissors' do
       end
       it 'finishes with a call to finish' do
         game.finish
-        expect { game.finished? }.to eq(true)
+        expect { game.play }.to raise_error(RuntimeError)
       end
     end
 
@@ -106,7 +106,7 @@ describe 'A game of rock paper scissors' do
         expect(game.play(:scissors, :scissors)).to eq("Tie game. Try again!")
       end
       it 'is not finished' do
-        expect { game.finished? }.to eq(false) 
+        expect { game.play }.to_not raise_error
       end
     end
 
