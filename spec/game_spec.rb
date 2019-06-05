@@ -77,7 +77,10 @@ describe 'A game of rock paper scissors' do
         expect(game.play(:rock, :paper)).to eq("Paper beats rock!")
         expect(game.play(:paper, :rock)).to eq("Paper beats rock!")
       end
-      skip('is finished')
+      it 'finishes with a call to finish' do
+        game.finish
+        expect { game.play }.to raise_error(RuntimeError)
+      end
     end
 
 
