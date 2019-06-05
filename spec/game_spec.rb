@@ -85,8 +85,16 @@ describe 'A game of rock paper scissors' do
 
 
     context 'scissors vs paper' do
-      skip('returns "Scissors beats paper!"')
-      skip('is finished')
+      game = Game.new
+      game.start
+      it 'announces the correct winner' do
+        expect(game.play(:scissors, :paper)).to eq("Scissors beats paper!")
+        expect(game.play(:paper, :scissors)).to eq("Scissors beats paper!")
+      end
+      it 'finishes with a call to finish' do
+        game.finish
+        expect { game.play }.to raise_error(RuntimeError)
+      end
     end
 
     context 'a tie game' do
