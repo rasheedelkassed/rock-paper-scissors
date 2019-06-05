@@ -57,13 +57,17 @@ describe 'A game of rock paper scissors' do
     end
 
     context 'rock vs scissors' do
+      game = Game.new
+      game.start
       it 'announces the correct winner' do
-        game = Game.new
-        game.start
         expect(game.play(:rock, :scissors)).to eq("Rock beats scissors!")
         expect(game.play(:scissors, :rock)).to eq("Rock beats scissors!")
       end
-      skip('is finished')
+      
+      it 'finishes with a call to finish' do
+        game.finish
+        expect { game.play }.to raise_error(RuntimeError)
+      end
     end
 
     context 'rock vs paper' do

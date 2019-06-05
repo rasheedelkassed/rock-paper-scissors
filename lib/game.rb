@@ -9,11 +9,15 @@ class Game
   def started?
     self.started || false
   end
+  
+  def finish
+    @started = false
+  end
 
   def play(left = nil, right = nil)
     raise 'Game must first be started' unless started?
     return nil unless (left && right)
-    if (left == :rock && right == :scissors)
+    if ((left == :rock && right == :scissors) || (left == :scissors && right == :rock))
       "Rock beats scissors!"
     else
       :UNKNOWN
