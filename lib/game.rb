@@ -19,6 +19,8 @@ class Game
     return nil unless (left && right)
     if ((left == :rock && right == :scissors) || (left == :scissors && right == :rock))
       "Rock beats scissors!"
+    elsif ((left == :paper && right == :rock) || (left == :rock && right == :paper))
+      "Paper beats rock!"
     else
       :UNKNOWN
     end
